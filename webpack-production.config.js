@@ -7,7 +7,7 @@ module.exports = {
     devtool: 'cheap-source-map',
     entry: ['./src/js/App.jsx'],
     output: {
-        path: path.join(__dirname, 'build'),
+        path: path.join(__dirname, 'build/bundle'),
         filename: 'bundle.js',
         publicPath: './build/'//static
     },
@@ -29,7 +29,7 @@ module.exports = {
             {
                 test: /\.scss$/,
                 include: /src/,
-                loaders: ['style', 'css', 'sass?outputStyle=expanded']
+                loaders: ['style', 'css', 'sass?sourceMap']
             }, {
                 test: /\.jsx?$/,
                 exclude: /(node-modules)/,
@@ -39,10 +39,11 @@ module.exports = {
                 include: path.join(__dirname, 'src')
             }, {
                 test: /\.(jpe?g|png|gif|svg)$/i,
-                // loaders: ['url?limit=8192', 'img']
                 include:/src/,
                 exclude:/(node-modules)/,
-                loader:'file-loader?name=[name].[ext]&outputPath=./build/build/images/'
+                loader:'file-loader?name=[name].[ext]&publicPath=images/&outputPath=../images/',
+                //had to specify publicPath for this particular project even tough the folder structure is the.same.as.always ¯\_(ツ)_/¯
+
             }, {
                 test: /\.(eot|ttf|woff|woff2)$/i,
                 loader:'url-loader',
