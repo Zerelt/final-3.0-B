@@ -3,9 +3,9 @@ import React, {Component} from 'react';
 export default class Contact extends React.Component {
   render () {
     return(
-      <div className='contactMe-root'>
+      <form className='contactMe-root' netlify>
         <div className='contactMe-container'>
-          <form name='contact' netlify>
+          <div name='contact' >
             <div>
               <p className='userP'>
                 <input type='text' required
@@ -43,9 +43,9 @@ export default class Contact extends React.Component {
             <button type='submit' className='submitBtn waves-effect '>
               Submit
             </button>
-          </form>
+          </div>
         </div>
-      </div>
+      </form>
     )
   }
 }
