@@ -42,7 +42,7 @@ module.exports = {
                 // loaders: ['url?limit=8192', 'img']
                 include:/src/,
                 exclude:/(node-modules)/,
-                loader:'file-loader?name=[name].[ext]&outputPath=../images/'
+                loader:'file-loader?name=[name].[ext]&outputPath=../build/images/'
             }, {
                 test: /\.(eot|ttf|woff|woff2)$/i,
                 loader:'url-loader',
