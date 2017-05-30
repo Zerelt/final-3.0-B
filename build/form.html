@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <title>Alexander</title>
+  <meta content="True" name="HandheldFriendly">
+  <meta name="viewport" content="width=device-width, height=device-height, , initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="viewport" content="width=device-width">
+  <meta charset='UTF-8'>
+</head>
+<body>
+  <form name='contact' netlify method='post'>
+    <input type='hidden' name='form-name' value='siteEmail' />
+    <div>
+      <p class='userP'>
+        <input type='text' required
+          name='userName'
+          class='userInp'/>
+        <label for='userName' class='userLbl'>
+          Name
+        </label>
+        <i class='iLine'></i>
+      </p>
+      <p class='emailP'>
+        <input type='text'
+          required autocomplete='off'
+          name='email'
+          class='userInp'/>
+        <label for='email' class='emailLbl'>
+          Email
+        </label>
+        <i class='iLine'></i>
+      </p>
+    </div>
+
+    <div>
+      <p class='tAreaP'>
+        <textarea name='message'
+          class='message'
+          required >
+        </textarea>
+        <label for='textarea' class='textareaLbl'>
+          Your message:
+        </label>
+        <i class='iLine'></i>
+      </p>
+    </div>
+
+    <button type='submit' class='submitBtn waves-effect '>
+      Submit
+    </button>
+  </form>
+</body>
+</html>
