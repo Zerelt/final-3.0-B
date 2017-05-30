@@ -17,7 +17,8 @@ export default class Contact extends React.Component {
                 <i className='iLine'></i>
               </p>
               <p className='emailP'>
-                <input type='text' required
+                <input type='text'
+                  required autoComplete='off'
                   name='email'
                   className='userInp'/>
                 <label htmlFor='email' className='emailLbl'>
