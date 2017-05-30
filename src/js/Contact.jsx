@@ -5,7 +5,8 @@ export default class Contact extends React.Component {
     return(
       <div className='contactMe-root'>
         <div className='contactMe-container'>
-          <form name='contact' netlify>
+          <form name='contact' netlify method='post'>
+            <input type='hidden' name='form-name' value='siteEmail' />
             <div>
               <p className='userP'>
                 <input type='text' required
