@@ -119,7 +119,7 @@ class App extends React.Component {
     this.setState({
       distanceScrolled: dScrolled
     });
-    console.log('distance scrolled is: ' + this.state.distanceScrolled);
+    // console.log('distance scrolled is: ' + this.state.distanceScrolled);
   }
 
   //========================================= Menu Appearance + Highlight on scroll handler ===========================================
@@ -136,8 +136,8 @@ class App extends React.Component {
     //bottom:inherit; instead of initial for IE to work
 
     let topHeightDifference = f.offsetTop - f.getBoundingClientRect().height; //why does f.offsetTop return the offsetTop + the height of the container in this case ?
-    console.log('contacts offsetTop is : '+f.offsetTop);
-    console.log('top - height is: ' + topHeightDifference);
+    // console.log('contacts offsetTop is : '+f.offsetTop);
+    // console.log('top - height is: ' + topHeightDifference);
 
     if(this.state.availableWidth > 1024 ) {
       if ( this.state.distanceScrolled >= a.offsetTop ) {
@@ -220,16 +220,16 @@ class App extends React.Component {
     }.bind(this),550);
     if(item=='main') {
       ReactDOM.findDOMNode(this.a).scrollIntoView({ behavior: 'smooth'});
-      console.log('cliked MAIN');
+      // console.log('cliked MAIN');
     } else if(item=='about') {
       ReactDOM.findDOMNode(this.b).scrollIntoView({ behavior: 'smooth'});
-      console.log('cliked about');
+      // console.log('cliked about');
     } else if(item=='projects') {
       ReactDOM.findDOMNode(this.d).scrollIntoView({block:'start', behavior: 'smooth'});
-      console.log('cliked projects');
+      // console.log('cliked projects');
     } else if(item=='contacts') {
       ReactDOM.findDOMNode(this.g).scrollIntoView({block: 'start', behavior: 'smooth'});
-      console.log('clicked contacts');
+      // console.log('clicked contacts');
     }
   }
 
@@ -238,7 +238,7 @@ class App extends React.Component {
     this.setState({
       showMenu: !this.state.showMenu
     });
-    console.log(this.state.showMenu + ' showMenu');
+    // console.log(this.state.showMenu + ' showMenu');
     if(this.state.showMenu) {
       setTimeout(function () {
           this.setState({
@@ -329,7 +329,7 @@ class App extends React.Component {
             });
           }.bind(this), 300);
     }
-    console.log(this.state.showDetails);
+    // console.log(this.state.showDetails);
   }
 
   //========================================== Project Click Handler < 1024px ========================
@@ -341,8 +341,8 @@ class App extends React.Component {
       this.setState({
         prjctSelected: prSelected
       });
-      console.log("works");
-      console.log(this.state.prjctSelected);
+      // console.log("works");
+      // console.log(this.state.prjctSelected);
     }
   }
 
