@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 export default class MobiBtn extends React.Component {
     render() {
-      let x = setTimeout(function(){console.log('fade_away'); var abc='fade_away'; return abc; },500);
+      // let x = setTimeout(function(){console.log('fade_away'); var abc='fade_away'; return abc; },500);
 
       let R1 = !this.props.showMenu ? '' : 'moveDown';
       let R2 = !this.props.showMenu ? '' : 'fade_away';
