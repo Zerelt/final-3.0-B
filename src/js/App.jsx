@@ -413,6 +413,13 @@ class App extends React.Component {
 App.defaultProps={
   rootInfo:[
     {
+      titles:'Filters App - Copy',
+      tools:'React, Sass, Webpack2, Material Design',
+      descr:'Fully responsive, 1-to-1 copy of the Filters for Iphone app landing page. Made primarily to test out webpack 2 configuration',
+      imgSrc:'11FiltersCopy',
+      prjLink:'https://filterscopy.netlify.com'
+    },
+    {
       titles:'React Date Countdown',
       tools:'React, Sass, Webpack, Illustrator, Material Design',
       descr:'App that counts how many days have past or remain since/until the important event you specified, with a separate screen showing the closest upcoming event.',
