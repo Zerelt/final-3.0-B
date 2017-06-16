@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,600,700" rel="stylesheet');
 @font-face {
-  font-family:Lovelo;
-  src:url('./LoveloLineBold.ttf') format("truetype");
-  src:url('./LoveloLineBold.woff') format('woff');
+  font-family:Lovelo_lc;
+  src:url('../fonts/LoveloLineBold.ttf') format("truetype");
+  src:url('../fonts/LoveloLineBold.woff') format('woff');
 }
 
 $prj-padding:20px;
@@ -341,7 +341,7 @@ nav {
       -webkit-box-pack: center;
           -ms-flex-pack: center;
               justify-content: center;
-      font-family: 'Lovelo';
+      font-family: 'Lovelo_lc';
       font-size:20px;
       font-weight: 600;
       width: 120px;
@@ -395,7 +395,7 @@ nav {
 }
 
 .mainContainer {
-  background:url('../images/mainPage2.svg') center center no-repeat;
+  background:url('../images/mainPage2_sm.svg') center center no-repeat;
   background-size:cover;
   #outlinedText_1{
     /* height:auto;*/

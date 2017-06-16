@@ -1,54 +1,84 @@
-var path = require('path');
-var webpack = require('webpack');
-//for production;
-//use with cli command:  webpack --config webpack-production.config.js -p
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
-    devtool: 'cheap-source-map',
-    entry: ['./src/js/App.jsx'],
-    output: {
-        path: path.join(__dirname, 'build/bundle'),
-        filename: 'bundle.js',
-        publicPath: './build/'//static
-    },
-    plugins: [
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production')
-            }
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            compressor: {
-                warnings: false
-            }
-        })
-    ],
-    module: {
-        loaders: [
-            {
-                test: /\.scss$/,
-                include: /src/,
-                loaders: ['style', 'css', 'sass?sourceMap']
-            }, {
-                test: /\.jsx?$/,
-                exclude: /(node-modules)/,
-                loaders: [
-                    'react-hot-loader/webpack', 'babel?presets[]=stage-0,presets[]=react,presets[]=es2015'
-                ],
-                include: path.join(__dirname, 'src')
-            }, {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                include:/src/,
-                exclude:/(node-modules)/,
-                loader:'file-loader?name=[name].[ext]&publicPath=images/&outputPath=../images/',
-                //had to specify publicPath for this particular project even tough the folder structure is the.same.as.always ¯\_(ツ)_/¯
+  entry: {
+    app:'./src/components/App.jsx'
+  },
 
-            }, {
-                test: /\.(eot|ttf|woff|woff2)$/i,
-                loader:'url-loader',
-                // loader:'file-loader?name=[name].[ext]&outputPath=../fonts/'
-            }
+  output: {
+    path: path.resolve(__dirname,'dist'),
+    filename: '[name].bundle.js',
+    // publicPath:'./'
+  },
+
+  devtool:'cheap-source-map',
+
+  module: {
+    rules: [
+      {
+        test:/\.scss$/,
+        // exclude:/node_modules/,
+        use: ExtractTextPlugin.extract({
+          fallback:'style-loader',
+          use:['css-loader','sass-loader'],
+          publicPath:'/dist/'
+        })
+      },
+      {
+        test:/\.jsx$/,
+        exclude:/node_modules/,
+        use:['babel-loader']
+      },
+      {
+        test:/\.(jpe?g|png|svg|gif)$/i,
+        exclude:/node_modules/,
+        use:[
+          'file-loader?name=[name].[ext]&outputPath=images/&publicPath=./',
+          //specify publicPath for production mode: with this folder structure publicPath needs to be ./
+          //if it's just publicPath=/ then the path for images becomes: file:///images/[name].[ext]
+          //with the ./ the path for images is: ProjectRootFolder/dist/images/[name].[ext]
+          //same for the font files
+          'image-webpack-loader'
         ]
-    }
+      },
+      {
+        test: /\.(ttf|woff|eot)$/,
+        use: 'file-loader?name=fonts/[name].[ext]&publicPath=./'
+        //specify publicPath for production mode: with htis folder structure publicPath needs to be ./
+      }
+    ]
+  },//end module
+
+  devServer:{
+    contentBase:path.join(__dirname,'dist'),
+    // publicPath:'./',
+    compress:true,
+    // port:8080,
+    // stats: 'errors-only',
+    hot: false,
+    // hotOnly: true
+    // open:true
+  },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      title:'Copy of Filters for Iphone',
+      minify: {
+        collapseWhitespace:true
+      },
+      hash: true,
+      // filename:'./../index.html',
+      // excludeChunks:['contact'],
+      template: './src/index.html',
+      // favicon: 'path/to/favicon.png'
+    }),
+    new ExtractTextPlugin({
+      filename:'app.css',
+      disable:false,
+      allChunks:true
+    })
+  ]//end plugins
 };

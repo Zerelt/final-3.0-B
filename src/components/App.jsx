@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import '../css/style.scss';
+import '../style/style.scss';
 import Waves  from 'node-waves';
 import '../../node_modules/node-waves/src/scss/waves.scss';
 import {Motion, spring} from 'react-motion';
@@ -135,7 +135,7 @@ class App extends React.Component {
     //#DA2F54  fffefc 3498db
     //bottom:inherit; instead of initial for IE to work
 
-    let topHeightDifference = f.offsetTop - f.getBoundingClientRect().height; //why does f.offsetTop return the offsetTop + the height of the container in this case ?
+    let topHeightDifference = f.offsetTop - f.getBoundingClientRect().height;
     // console.log('contacts offsetTop is : '+f.offsetTop);
     // console.log('top - height is: ' + topHeightDifference);
 
@@ -222,10 +222,10 @@ class App extends React.Component {
       ReactDOM.findDOMNode(this.a).scrollIntoView({ behavior: 'smooth'});
       // console.log('cliked MAIN');
     } else if(item=='about') {
-      ReactDOM.findDOMNode(this.b).scrollIntoView({ behavior: 'smooth'});
+      ReactDOM.findDOMNode(this.b).scrollIntoView({block:'start', behavior: 'smooth'});
       // console.log('cliked about');
     } else if(item=='projects') {
-      ReactDOM.findDOMNode(this.d).scrollIntoView({block:'start', behavior: 'smooth'});
+      ReactDOM.findDOMNode(this.c).scrollIntoView({block:'start', behavior: 'smooth'}); //was ReactDOM.findDOMNode(this.d)
       // console.log('cliked projects');
     } else if(item=='contacts') {
       ReactDOM.findDOMNode(this.g).scrollIntoView({block: 'start', behavior: 'smooth'});
@@ -263,11 +263,11 @@ class App extends React.Component {
 
     if (this.state.availableWidth > 1024 ) {
       this.setState({
-        bubbleBreakpoint: a.getBoundingClientRect().height
+        bubbleBreakpoint: (a.getBoundingClientRect().height+249)
       });
     } else {
       this.setState({
-        bubbleBreakpoint: (a.getBoundingClientRect().height+85)
+        bubbleBreakpoint: (a.getBoundingClientRect().height+220)//+85
       });
     }
   }
@@ -498,23 +498,23 @@ App.defaultProps={
     },
     {
       skillTitle:'React and its ecosystem',
-      skillDescr:'Altough it was easy and fast to grasp the basic functionality of this library, for me it took a little to get to the point where I don\'t instinctively want to grab elements from the virtual DOM and work with them. I now have very good knowledge and experience working with React (both es5 and es6), state, ref callbacks, lifecycle methods and have learned to plan ahead more carefully than usual when working with react. Currently learning more about React Router and Redux. This site was made with react.'
+      skillDescr:'Altough it was easy and fast to grasp the basic functionality of this library, for me it took a little to get to the point where I don\'t instinctively want to grab elements from the virtual DOM and work with them. I now have very good knowledge and experience working with React (both es5 and es6), state, ref callbacks, lifecycle methods and have learned to plan ahead more carefully than usual when working with react. Currently learning more about React Router and Redux. This site was made with react, es6, babel and webpack2.'
     },
     {
       skillTitle:'jQuery',
-      skillDescr:'I have very good practice and experience working with the jquery library - a lot of the apps below are written with it.'
+      skillDescr:'I have very good experience working with the jquery library - a lot of the apps below are written with it.'
     },
     {
       skillTitle:'Javascript',
-      skillDescr:'What I know I\'ve learned mostly by doing. After I started working with react I felt the need to get a better understanding of JS so I read almost all the books in Kyle Simpsons\' "You don\'t know Js" series and Douglas Crockfords\' "Javascript the Good parts" and altough closures aren\'t really clear yet, I do feel I\'ve learned more about how javascript works, from simple things like LHS and RHS assignment and finally getting why global variables are to be avoided to scopes , more knowledge on Objects(although to be honest I haven\'t worked with them much) and es6 JS ( not a fan of arrow functions sorry ). Trying to keep up to date with everything and to learn more with egghead courses and blogs.'
+      skillDescr:'What I know I\'ve learned mostly by doing. After I started working with react I felt the need to get a better understanding of JS so I read almost all the books in Kyle Simpsons\' "You don\'t know Js" series and Douglas Crockfords\' "Javascript the Good parts" and altough closures aren\'t really clear yet, I do feel I\'ve learned more about how javascript works, from simple things like - hoisting, LHS and RHS assignment, finally getting why global variables are to be avoided - to scopes , more knowledge on Objects(although to be honest I haven\'t worked with them much) and es6 JS. Trying to keep up to date with everything and to learn more with egghead courses and blogs.'
     },
     {
       skillTitle:'About Me',
-      skillDescr:'Hello and welcome ! My name\'s Alex, I\'m a self-taught front end developer with a good sense of design, keen eye and attention to details and huge interest in UI/UX and tech in general. I started learning web development by myself over a year ago after reading an article about remote online coding bootcamps and the excellent job prospects people learning to code have. I started out with codecademy tutorials, tried ruby for a bit but liked javascript more and decided to stick with it. Later I found out about free code camp and did all the algorithms, challanges, and all the js, jQuery and frontend related projects. Besides this I also learned from Udemy and Udacity courses, blogs, replicating what they did, and spent time in general going through other people\'s code on codepen and github/npm modules. Worked with a small group on a small project. Throughout all this I realized I like coding, making projects come to life. I also came to apreciate a good design very much and I enjoy making things looks good a lot, and am really looking forward to working on projects with a design that makes people wanna look again not because they didn\'t understand something but because they want to see it again.'
+      skillDescr:'Hello and welcome ! My name\'s Alex, I\'m a self-taught front end developer with a good sense of design, keen eye and attention to details and huge interest in UI/UX and tech in general. I started learning web development by myself about a year ago after reading an article about remote online coding bootcamps and the excellent job prospects people learning to code have. I started out with codecademy tutorials, tried ruby for a bit but liked javascript more and decided to stick with it. Later I found out about free code camp and did all the algorithms, challanges, and all the js, jQuery and frontend related projects. Besides this I also learned from Udemy, Udacity and Egghead courses, blogs, replicating what they did, and spent time in general going through other people\'s code on codepen and github/npm modules. Worked with a small group on a small project. Throughout all this I realized I like coding, making projects come to life. I also came to apreciate a good design very much and I enjoy making things looks good a lot, and am really looking forward to working on projects with a design that makes people wanna look again not because they didn\'t understand something but because they want to see it again.'
     },
     {
       skillTitle:'About this website',
-      skillDescr:'This is my little window to the world. A portoflio website made from scratch with React, es6 javascript, babel webpack, sass and Illustrator. I went through 2 other versions (not just a design version but code too) before finally coming up with this one. Altough it\'s not as impactfull as the first and with a bit less code than the second I believe this version has the best balance between simplicity, intuitive usage and aspect. Here I tried to make use of a lot of the characteristics and effects you see in top modern day websites:hand-made scroll-based events hand-made scrollspy (just for the sake of doing them myself and not using a library) -both with a bit of debounce to lessen the lag on IE- and ease-out menu activated scrolling (again,no plugins - I managed to find a small polyfill that adds the scrolling with easing that\'s available in Firefox); svg animations and icons; responsive design; googles\' material design guidelines; a basic grid to make things look orderly; a color theme throughout the site; custom hand-made backgrounds and not just generic images/videos grabbed from google; automatic copyright year updates; a bit of typography play and sublimation.'
+      skillDescr:'This is my little window to the world. A portoflio website made from scratch with React, es6 javascript, babel, webpack 2, sass and Illustrator. I went through 2 other versions (not just a design version but code too) before finally coming up with this one. Altough it\'s not as impactfull as the first and with a bit less code than the second I believe this version has the best balance between simplicity, intuitive usage and aspect. Here I tried to make use of a lot of the characteristics and effects you see in top modern day websites:hand-made scroll-based events hand-made scrollspy (just for the sake of doing them myself and not using a library) - both with a bit of debounce to lessen the lag on IE- and ease-out menu activated scrolling (again,no plugins - I managed to find a small polyfill that adds the scrolling with easing that\'s available in Firefox); svg animations and icons; responsive design; googles\' material design guidelines; a basic grid to make things look orderly; a color theme throughout the site; custom hand-made backgrounds and not just generic images/videos grabbed from google; automatic copyright year updates; a bit of typography play and sublimation.'
     },
     {
       skillTitle:'Adobe Illustrator',
