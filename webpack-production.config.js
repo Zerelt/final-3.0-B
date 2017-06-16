@@ -65,7 +65,7 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      title:'Copy of Filters for Iphone',
+      title:'Alexander',
       minify: {
         collapseWhitespace:true
       },
